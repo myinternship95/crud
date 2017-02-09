@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'users/signup'
     else
-      redirect to '/projects'
+      redirect to '/books'
     end
   end
 
@@ -11,10 +11,10 @@ class UsersController < ApplicationController
     if params.values.any? {|value| value == ""}
       erb :'users/signup', locals: {message: "You can't do that!"}
     else
-      @user = User.new(username: params[:username], email: params[:email], password: params[:password])
+      @user = User.new(firstname: params[:firstname],lastname: params[:lastname], email: params[:email], password: params[:password],avatar: params[:avatar],about_me: params[:about_me])
       @user.save
       session[:user_id] = @user.id
-      redirect to '/projects'
+      redirect to '/books'
     end
   end
 
@@ -22,15 +22,15 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'users/login'
     else
-      redirect to '/projects'
+      redirect to '/books'
     end
   end
 
   post '/login' do
-    user = User.find_by(:username => params[:username])
+    user = User.find_by(:email => params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to '/projects'
+      redirect to '/books'
     else
       erb :'users/login', locals: {message: "Your credentials are incorrect!"}
     end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       session.destroy
       redirect to '/'
     else
-      redirect to '/projects'
+      redirect to '/books'
     end
   end
 

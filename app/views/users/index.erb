@@ -1,0 +1,12 @@
+<%= erb :nav %>
+<section class="intro-section">
+  <div class="container">
+    <h1>All User</h1>
+    <% @users.each do |user| %>
+      <h2><a href="/users/<%= user.id %>"><%= user.email %></a></h2>
+    <% end %>
+	<button class="btn btn-default"><a href="/users/new">Create A New Book</a></button>
+  </div>
+</section>
+
+

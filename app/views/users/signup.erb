@@ -3,9 +3,11 @@
     <div class="container">
 <h3>Sign Up</h3>
 <form action="/signup" method="POST">
-  <input type="text" class="form-control" name="username" placeholder="Username:">
-  <input type="text" class="form-control" name="email" placeholder="Email:">
-  <input type="password" class="form-control" name="password" placeholder="Password:">
+  <input type="text" class="form-control" name="firstname" placeholder="firstname:">
+  <input type="text" class="form-control" name="lastname" placeholder="lastname:...">
+  <input type="text" class="form-control" name="email" placeholder="Email...">
+  <input type="password" class="form-control" name="password" placeholder="Password...">
+  <input type="text" class="form-control" name="about_me" placeholder="about_me...">
   <input type="submit" class="btn btn-primary" value="Sign Up">
 </form>
 <% unless locals.empty? %>
